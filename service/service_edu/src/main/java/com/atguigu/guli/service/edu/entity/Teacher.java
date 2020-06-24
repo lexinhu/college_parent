@@ -57,4 +57,7 @@ public class Teacher extends BaseEntity {
     @TableLogic
     private Boolean deleted;
 
+    @TableField(exist = false)
+    private Boolean h;
+
 }
