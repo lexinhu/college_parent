@@ -1,7 +1,6 @@
 package com.atguigu.guli.service.edu.entity;
 
 import com.atguigu.guli.service.base.model.BaseEntity;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -53,11 +52,8 @@ public class Teacher extends BaseEntity {
     private Date joinDate;
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
-    @TableField("is_deleted")
+//    @TableField("is_deleted")
     @TableLogic
     private Boolean deleted;
-
-    @TableField(exist = false)
-    private Boolean h;
 
 }
