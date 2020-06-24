@@ -1,5 +1,6 @@
 server:
   port: 8110 #服务端口
+
 spring:
   profiles:
     active: dev
@@ -10,6 +11,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
+
+#日期格式化
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 
 #Mybatis-plus日志打印
 mybatis-plus:

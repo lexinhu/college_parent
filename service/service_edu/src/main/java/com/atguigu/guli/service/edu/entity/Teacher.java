@@ -4,6 +4,7 @@ import com.atguigu.guli.service.base.model.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -47,13 +48,13 @@ public class Teacher extends BaseEntity {
     @ApiModelProperty(value = "排序")
     private Integer sort;
 
-    @ApiModelProperty(value = "入驻时间")
+    @ApiModelProperty(value = "入驻时间",example = "2020-01-01")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
     private Date joinDate;
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     @TableField("is_deleted")
     @TableLogic
     private Boolean deleted;
-
 
 }
