@@ -1,6 +1,5 @@
 package com.atguigu.guli.service.edu.controller.admin;
 
-
 import com.atguigu.guli.common.base.result.R;
 import com.atguigu.guli.service.edu.entity.Teacher;
 import com.atguigu.guli.service.edu.entity.vo.TeacherQueryVo;
@@ -94,4 +93,3 @@ public class TeacherController {
     }
 
 }
-

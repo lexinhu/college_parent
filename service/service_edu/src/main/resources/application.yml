@@ -1,6 +1,5 @@
 server:
   port: 8110 #服务端口
-
 spring:
   profiles:
     active: dev
