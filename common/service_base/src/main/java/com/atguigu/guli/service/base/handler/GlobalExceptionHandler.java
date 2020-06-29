@@ -21,7 +21,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public R error(Exception e){
+        //后台记录日志，可通过配置xml记录到日志文件中去
         log.error(ExceptionUtils.getMessage(e));
+        //返回json数据
         return R.error();
     }
 
