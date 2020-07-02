@@ -30,5 +30,5 @@ build/
 
 ### VS Code ###
 .vscode/
-/logger/
 /guli_admin/
+/logger/
