@@ -1,14 +1,20 @@
 package com.atguigu.guli.service.edu.service.impl;
 
+import com.atguigu.guli.common.base.result.R;
 import com.atguigu.guli.service.edu.entity.Teacher;
 import com.atguigu.guli.service.edu.entity.vo.TeacherQueryVo;
+import com.atguigu.guli.service.edu.feign.OssFileService;
 import com.atguigu.guli.service.edu.mapper.TeacherMapper;
 import com.atguigu.guli.service.edu.service.TeacherService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -20,6 +26,9 @@ import org.springframework.util.StringUtils;
  */
 @Service
 public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> implements TeacherService {
+
+    @Autowired
+    private OssFileService ossFileService;
 
     @Override
     public Page<Teacher> selectPage(Page<Teacher> pageParam, TeacherQueryVo teacherQueryVo) {
@@ -57,5 +66,30 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
 
         return baseMapper.selectPage(pageParam, wrapper);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectNameListByKey(String key) {
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("name");
+        queryWrapper.likeRight("name",key);
+        List<Map<String,Object>> nameList = baseMapper.selectMaps(queryWrapper);
+
+        return nameList;
+    }
+
+    @Override
+    public boolean removeAvatarById(String id) {
+        //根据ID查询讲师Avatar头像url地址
+        Teacher teacher = baseMapper.selectById(id);
+
+        if (teacher!=null){
+            String avatar = teacher.getAvatar();
+            if (!StringUtils.isEmpty(avatar)){
+                R r = ossFileService.removeFile(avatar);
+                return r.getSuccess();
+            }
+        }
+        return false;
     }
 }

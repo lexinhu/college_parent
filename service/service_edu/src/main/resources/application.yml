@@ -11,12 +11,30 @@ spring:
     username: root
     password: 123456
 
-#日期格式化
+
+  #日期格式化
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # nacos服务地址
+    sentinel:
+      transport:
+        port: 8081 #跟控制台交流的端口，随意指定一个未使用的端口即可
+        dashboard: localhost:8080 # 指定控制台服务的地址
+
 #Mybatis-plus日志打印
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+ribbon:
+  ConnectTimeout: 15000 #连接建立的超时时长，默认1秒
+  ReadTimeout: 15000 #处理请求的超时时间，默认为1秒
+
+feign:
+  sentinel:
+    enabled: true
