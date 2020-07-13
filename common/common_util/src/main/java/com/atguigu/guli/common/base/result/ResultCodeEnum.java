@@ -58,11 +58,11 @@ public enum ResultCodeEnum {
     SMS_SEND_ERROR_BUSINESS_LIMIT_CONTROL(false, 28007, "短信发送过于频繁");
 
 
-    private Boolean success;
+    private final Boolean success;
 
-    private Integer code;
+    private final Integer code;
 
-    private String message;
+    private final String message;
 
     ResultCodeEnum(Boolean success, Integer code, String message) {
         this.success = success;

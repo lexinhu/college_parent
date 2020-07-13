@@ -32,3 +32,4 @@ build/
 .vscode/
 /guli_admin/
 /logger/
+/service/service_oss/src/main/resources/application-dev.yml

@@ -11,7 +11,6 @@ spring:
     username: root
     password: 123456
 
-
   #日期格式化
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -31,6 +30,7 @@ spring:
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+
 ribbon:
   ConnectTimeout: 15000 #连接建立的超时时长，默认1秒
   ReadTimeout: 15000 #处理请求的超时时间，默认为1秒
@@ -38,3 +38,6 @@ ribbon:
 feign:
   sentinel:
     enabled: true
+
+mybatis-plus:
+  mapper-locations: classpath:**/xml/*.xml
