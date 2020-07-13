@@ -8,8 +8,8 @@
         <module>service_base</module>
     </modules>
     <parent>
-        <artifactId>guli_parent</artifactId>
-        <groupId>com.atguigu</groupId>
+        <artifactId>college_parent</artifactId>
+        <groupId>com.xn2001</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <version>0.0.1-SNAPSHOT</version>

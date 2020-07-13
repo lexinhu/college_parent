@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>common</artifactId>
-        <groupId>com.atguigu</groupId>
+        <groupId>com.xn2001</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.atguigu</groupId>
+            <groupId>com.xn2001</groupId>
             <artifactId>common_util</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
