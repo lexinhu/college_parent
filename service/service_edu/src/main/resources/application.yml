@@ -6,7 +6,7 @@ spring:
   application:
     name: service-edu
   datasource:
-    url: jdbc:mysql://localhost:3306/guli_edu?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&useUnicode=true
+    url: jdbc:mysql://localhost:3306/edu_college?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&useUnicode=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
@@ -25,12 +25,6 @@ spring:
         port: 8081 #跟控制台交流的端口，随意指定一个未使用的端口即可
         dashboard: localhost:8080 # 指定控制台服务的地址
 
-#Mybatis-plus日志打印
-#mybatis-plus:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-
 ribbon:
   ConnectTimeout: 15000 #连接建立的超时时长，默认1秒
   ReadTimeout: 15000 #处理请求的超时时间，默认为1秒
@@ -41,3 +35,5 @@ feign:
 
 mybatis-plus:
   mapper-locations: classpath:**/xml/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

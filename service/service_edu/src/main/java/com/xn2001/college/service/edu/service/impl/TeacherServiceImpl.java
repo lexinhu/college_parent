@@ -73,9 +73,8 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("name");
         queryWrapper.likeRight("name",key);
-        List<Map<String,Object>> nameList = baseMapper.selectMaps(queryWrapper);
 
-        return nameList;
+        return baseMapper.selectMaps(queryWrapper);
     }
 
     @Override
@@ -91,5 +90,15 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean updateById(Teacher entity) {
+        //根据ID查询讲师原的 Avatar 头像url地址并对比进行删除
+        Teacher teacher = baseMapper.selectById(entity.getId());
+        if (!teacher.getAvatar().equals(entity.getAvatar())){
+            ossFileService.removeFile(teacher.getAvatar());
+        }
+        return super.updateById(entity);
     }
 }

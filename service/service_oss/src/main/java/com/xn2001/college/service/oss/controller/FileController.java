@@ -30,13 +30,15 @@ public class FileController {
 
     /**
      * 文件上传
+     *
      * @param file
      */
     @ApiOperation("文件上传")
     @PostMapping("upload")
     public R upload(
             @ApiParam(value = "文件", required = true) @RequestParam("file") MultipartFile file,
-            @ApiParam(value = "模块", required = true) @RequestParam("module") String module)  {
+            @ApiParam(value = "模块", required = true) @RequestParam("module") String module
+    ) {
         try {
             InputStream inputStream = file.getInputStream();
             //获取上传文件的原文件名
@@ -53,10 +55,8 @@ public class FileController {
     @DeleteMapping("remove")
     public R removeFile(
             @ApiParam(value = "要删除的文件路径", required = true)
-            @RequestBody String url){
+            @RequestBody String url) {
         fileService.removeFile(url);
         return R.ok().message("文件刪除成功");
     }
-
-
 }

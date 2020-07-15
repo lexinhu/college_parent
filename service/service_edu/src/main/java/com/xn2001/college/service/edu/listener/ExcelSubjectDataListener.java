@@ -30,6 +30,7 @@ public class ExcelSubjectDataListener extends AnalysisEventListener<ExcelSubject
         log.info("levelTwoTitle:{}", levelTwoTitle);
 
         String parentId;
+
         //判断一级数据是否存在
         Subject subjectLevelOneTitle = this.getByTitle(levelOneTitle,"0");
         if (subjectLevelOneTitle == null){
@@ -50,7 +51,6 @@ public class ExcelSubjectDataListener extends AnalysisEventListener<ExcelSubject
             subject.setParentId(parentId);
             subjectMapper.insert(subject);
         }
-
     }
 
     @Override
@@ -59,11 +59,11 @@ public class ExcelSubjectDataListener extends AnalysisEventListener<ExcelSubject
     }
 
     /**
-     * 根据一级分类的名称查询数据是否存在
-     * @param title
+     * 根据分类的名称和父id来查询数据
+     * @param title 分类名名称
+     * @param parentId 父id
      * @return
      */
-
     private Subject getByTitle(String title,String parentId){
         QueryWrapper<Subject> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("title",title);

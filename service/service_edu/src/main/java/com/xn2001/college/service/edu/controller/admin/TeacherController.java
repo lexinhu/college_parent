@@ -1,11 +1,10 @@
 package com.xn2001.college.service.edu.controller.admin;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xn2001.college.common.base.result.R;
 import com.xn2001.college.service.edu.entity.Teacher;
 import com.xn2001.college.service.edu.entity.vo.TeacherQueryVo;
-import com.xn2001.college.service.edu.feign.OssFileService;
 import com.xn2001.college.service.edu.service.TeacherService;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -31,9 +30,6 @@ public class TeacherController {
 
     @Autowired
     private TeacherService teacherService;
-
-    @Autowired
-    private OssFileService ossFileService;
 
     @ApiOperation("所有讲师列表")
     @GetMapping("list")
@@ -96,6 +92,7 @@ public class TeacherController {
     @ApiOperation("更新讲师")
     @PutMapping("update")
     public R updateById(@ApiParam(value = "讲师对象", required = true) @RequestBody Teacher teacher) {
+
         boolean result = teacherService.updateById(teacher);
         if (result) {
             return R.ok().message("修改成功");

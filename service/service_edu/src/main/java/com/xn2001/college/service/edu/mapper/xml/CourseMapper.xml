@@ -2,4 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xn2001.college.service.edu.mapper.CourseMapper">
 
+    <select id="selectPageByCourseQueryVo"
+    resultType="com.xn2001.college.service.edu.entity.vo.CourseVo">
+        SELECT
+            c.id,
+            c.title,
+            c.lesson_num AS lessonNum,
+            CONVERT(c.price, DECIMAL(8,2)) AS price,
+            c.cover,
+            c.buy_count AS buyCount,
+            c.view_count AS viewCount,
+            c.status,
+            c.gmt_create AS gmtCreate,
+            t.name AS teacherName,
+            s1.title AS subjectParentTitle,
+            s2.title AS subjectTitle
+        FROM edu_course c
+        LEFT JOIN edu_teacher t ON c.teacher_id = t.id
+        LEFT JOIN edu_subject s1 ON c.subject_parent_id = s1.id
+        LEFT JOIN edu_subject s2 ON c.subject_id = s2.id
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

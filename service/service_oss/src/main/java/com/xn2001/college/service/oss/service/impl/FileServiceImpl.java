@@ -66,7 +66,6 @@ public class FileServiceImpl implements FileService {
         String host = "https://" + bucketname + "." + endpoint + "/";
         String objectName = url.substring(host.length());
         ossClient.deleteObject(bucketname, objectName);
-
         ossClient.shutdown();
 
     }
