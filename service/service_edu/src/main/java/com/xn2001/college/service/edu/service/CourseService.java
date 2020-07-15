@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xn2001.college.service.edu.entity.Course;
 import com.xn2001.college.service.edu.entity.form.CourseInfoForm;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xn2001.college.service.edu.entity.vo.CoursePublishVo;
 import com.xn2001.college.service.edu.entity.vo.CourseQueryVo;
 import com.xn2001.college.service.edu.entity.vo.CourseVo;
 
@@ -28,4 +29,8 @@ public interface CourseService extends IService<Course> {
     boolean removeCoverById(String id);
 
     boolean removeCourseById(String id);
+
+    CoursePublishVo getCoursePublishVoById(String id);
+
+    boolean publishCourseById(String id);
 }

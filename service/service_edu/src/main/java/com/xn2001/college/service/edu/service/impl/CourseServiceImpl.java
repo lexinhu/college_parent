@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xn2001.college.common.base.result.R;
 import com.xn2001.college.service.edu.entity.*;
 import com.xn2001.college.service.edu.entity.form.CourseInfoForm;
+import com.xn2001.college.service.edu.entity.vo.CoursePublishVo;
 import com.xn2001.college.service.edu.entity.vo.CourseQueryVo;
 import com.xn2001.college.service.edu.entity.vo.CourseVo;
 import com.xn2001.college.service.edu.feign.OssFileService;
@@ -142,6 +143,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         return false;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean removeCourseById(String id) {
 
@@ -170,5 +172,18 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
         //课程信息：course
         return this.removeById(id);
+    }
+
+    @Override
+    public CoursePublishVo getCoursePublishVoById(String id) {
+        return baseMapper.selectCoursePublishVoById(id);
+    }
+
+    @Override
+    public boolean publishCourseById(String id) {
+        Course course = new Course();
+        course.setId(id);
+        course.setStatus(Course.COURSE_NORMAL);
+        return this.updateById(course);
     }
 }

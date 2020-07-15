@@ -23,4 +23,21 @@
         LEFT JOIN edu_subject s2 ON c.subject_id = s2.id
         ${ew.customSqlSegment}
     </select>
+    <select id="selectCoursePublishVoById"
+            resultType="com.xn2001.college.service.edu.entity.vo.CoursePublishVo">
+        SELECT
+            c.id,
+            c.title,
+            c.cover,
+            c.lesson_num AS lessonNum,
+            CONVERT(c.price, DECIMAL(8,2)) AS price,
+            t.name AS teacherName,
+            s1.title AS subjectParentTitle,
+            s2.title AS subjectTitle
+        FROM edu_course c
+        LEFT JOIN edu_teacher t ON c.teacher_id = t.id
+        LEFT JOIN edu_subject s1 ON c.subject_parent_id = s1.id
+        LEFT JOIN edu_subject s2 ON c.subject_id = s2.id
+        WHERE c.id = #{id}
+    </select>
 </mapper>
