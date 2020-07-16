@@ -11,12 +11,3 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848 # nacos服务地址
-
-aliyun:
-  oss:
-    # 在阿里云上复制
-    endpoint:
-    keyid:
-    keysecret:
-    #bucket可以在控制台创建，也可以使用java代码创建，注意先测试bucket是否已被占用
-    bucketname:
