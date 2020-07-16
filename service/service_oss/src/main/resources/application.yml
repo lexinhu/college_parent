@@ -14,6 +14,7 @@ spring:
 
 aliyun:
   oss:
+    # 在阿里云上复制
     endpoint:
     keyid:
     keysecret:
