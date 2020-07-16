@@ -14,8 +14,8 @@ spring:
 
 aliyun:
   oss:
-    endpoint: oss-cn-shenzhen.aliyuncs.com
-    keyid: LTAI4G3fE4VQ9fo88SytRZJx
-    keysecret: N5Q3kkr7kH61sGLxyHBIbcbf7Bdx14
+    endpoint:
+    keyid:
+    keysecret:
     #bucket可以在控制台创建，也可以使用java代码创建，注意先测试bucket是否已被占用
-    bucketname: edu-college
+    bucketname:
