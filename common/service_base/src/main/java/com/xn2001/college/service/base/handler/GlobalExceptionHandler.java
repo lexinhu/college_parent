@@ -7,7 +7,6 @@ import com.xn2001.college.service.base.exception.CollegeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.jdbc.BadSqlGrammarException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2020/6/25 1:19
  **/
 @Slf4j
-@ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)

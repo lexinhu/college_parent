@@ -1,14 +1,14 @@
 package com.xn2001.college.service.edu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xn2001.college.common.base.result.R;
 import com.xn2001.college.service.edu.entity.Teacher;
 import com.xn2001.college.service.edu.entity.vo.TeacherQueryVo;
 import com.xn2001.college.service.edu.feign.OssFileService;
 import com.xn2001.college.service.edu.mapper.TeacherMapper;
 import com.xn2001.college.service.edu.service.TeacherService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -96,7 +96,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     public boolean updateById(Teacher entity) {
         //根据ID查询讲师原的 Avatar 头像url地址并对比进行删除
         Teacher teacher = baseMapper.selectById(entity.getId());
-        if (!teacher.getAvatar().equals(entity.getAvatar())){
+        if (!StringUtils.isEmpty(teacher.getAvatar()) && !teacher.getAvatar().equals(entity.getAvatar())){
             ossFileService.removeFile(teacher.getAvatar());
         }
         return super.updateById(entity);
