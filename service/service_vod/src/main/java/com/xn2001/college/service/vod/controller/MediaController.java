@@ -43,6 +43,20 @@ public class MediaController {
             log.error(ExceptionUtils.getMessage(e));
             throw new CollegeException(ResultCodeEnum.VIDEO_UPLOAD_TOMCAT_ERROR);
         }
-
     }
+
+    @DeleteMapping("remove/{vodId}")
+    public R removeVideo(
+            @ApiParam(value="阿里云视频id", required = true)
+            @PathVariable String vodId){
+        try {
+            videoService.removeVideo(vodId);
+            return R.ok().message("视频删除成功");
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getMessage(e));
+            throw new CollegeException(ResultCodeEnum.VIDEO_DELETE_ALIYUN_ERROR);
+        }
+    }
+
+
 }
