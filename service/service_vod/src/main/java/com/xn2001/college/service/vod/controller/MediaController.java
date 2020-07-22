@@ -57,6 +57,4 @@ public class MediaController {
             throw new CollegeException(ResultCodeEnum.VIDEO_DELETE_ALIYUN_ERROR);
         }
     }
-
-
 }
