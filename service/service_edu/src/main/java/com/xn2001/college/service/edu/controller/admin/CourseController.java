@@ -7,6 +7,7 @@ import com.xn2001.college.service.edu.entity.vo.CoursePublishVo;
 import com.xn2001.college.service.edu.entity.vo.CourseQueryVo;
 import com.xn2001.college.service.edu.entity.vo.CourseVo;
 import com.xn2001.college.service.edu.service.CourseService;
+import com.xn2001.college.service.edu.service.VideoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -31,6 +32,9 @@ public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private VideoService videoService;
 
     @ApiOperation("新增课程")
     @PostMapping("save-course-info")
@@ -84,8 +88,9 @@ public class CourseController {
     public R removeById(
             @ApiParam(value = "课程ID", required = true)
             @PathVariable String id) {
-        //TODO 删除视频：VOD
-        //在此处调用vod中的删除视频文件的接口
+
+        //删除视频：VOD
+        videoService.removeMediaVideoByCourseId(id);
 
         //删除封面：OSS
         courseService.removeCoverById(id);

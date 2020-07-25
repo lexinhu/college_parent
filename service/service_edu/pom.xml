@@ -20,6 +20,12 @@
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xn2001</groupId>
+            <artifactId>service_vod</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

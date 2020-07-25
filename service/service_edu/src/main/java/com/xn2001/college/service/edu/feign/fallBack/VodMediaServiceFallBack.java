@@ -5,16 +5,18 @@ import com.xn2001.college.service.edu.feign.VodMediaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author 乐心湖
  * @date 2020/7/22 0:30
  **/
-@Slf4j
 @Service
+@Slf4j
 public class VodMediaServiceFallBack implements VodMediaService {
     @Override
-    public R removeVideo(String vodId) {
+    public R removeVideoByIdList(List<String> videoIdList) {
         log.info("熔断保护");
-        return R.error();
+        return R.error().message("调用超时");
     }
 }

@@ -1,7 +1,10 @@
 package com.xn2001.college.service.edu.service;
 
-import com.xn2001.college.service.edu.entity.Video;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.netflix.client.ClientException;
+import com.xn2001.college.service.edu.entity.Video;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface VideoService extends IService<Video> {
     void removeMediaVideoById(String id);
+
+    void removeVideoByIdList(List<String> videoIdList) throws ClientException, com.aliyuncs.exceptions.ClientException;
+
+    void removeMediaVideoByChapterId(String chapterId);
+
+    void removeMediaVideoByCourseId(String courseId);
 }

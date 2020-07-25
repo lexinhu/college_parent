@@ -8,6 +8,7 @@ import com.aliyuncs.profile.DefaultProfile;
  * @date 2020/7/21 22:48
  **/
 public class AliyunVodSDKUtils {
+
     public static DefaultAcsClient initVodClient(String accessKeyId, String accessKeySecret) {
         String regionId = "cn-shanghai";  // 点播服务接入区域
         DefaultProfile profile = DefaultProfile.getProfile(regionId, accessKeyId, accessKeySecret);

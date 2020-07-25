@@ -47,8 +47,9 @@ public class MediaController {
 
     @DeleteMapping("remove/{vodId}")
     public R removeVideo(
-            @ApiParam(value="阿里云视频id", required = true)
-            @PathVariable String vodId){
+            @ApiParam(value = "阿里云视频id", required = true)
+            @PathVariable String vodId) {
+
         try {
             videoService.removeVideo(vodId);
             return R.ok().message("视频删除成功");

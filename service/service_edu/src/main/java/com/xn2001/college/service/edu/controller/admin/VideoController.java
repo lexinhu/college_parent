@@ -2,6 +2,9 @@ package com.xn2001.college.service.edu.controller.admin;
 
 
 import com.xn2001.college.common.base.result.R;
+import com.xn2001.college.common.base.result.ResultCodeEnum;
+import com.xn2001.college.common.base.util.ExceptionUtils;
+import com.xn2001.college.service.base.exception.CollegeException;
 import com.xn2001.college.service.edu.entity.Video;
 import com.xn2001.college.service.edu.service.VideoService;
 import io.swagger.annotations.Api;
@@ -10,6 +13,8 @@ import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -83,6 +88,20 @@ public class VideoController {
             return R.ok().message("修改成功");
         } else {
             return R.error().message("数据不存在");
+        }
+    }
+
+    @DeleteMapping("remove")
+    public R removeVideoByIdList(
+            @ApiParam(value = "阿里云视频id列表", required = true)
+            @RequestBody List<String> videoIdList){
+
+        try {
+            videoService.removeVideoByIdList(videoIdList);
+            return  R.ok().message("视频删除成功");
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getMessage(e));
+            throw new CollegeException(ResultCodeEnum.VIDEO_DELETE_ALIYUN_ERROR);
         }
     }
 }
