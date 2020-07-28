@@ -1,4 +1,4 @@
-package com.xn2001.college.service.vod.controller;
+package com.xn2001.college.service.vod.controller.admin;
 
 import com.xn2001.college.common.base.result.R;
 import com.xn2001.college.common.base.result.ResultCodeEnum;
@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author 乐心湖
@@ -53,6 +54,20 @@ public class MediaController {
         try {
             videoService.removeVideo(vodId);
             return R.ok().message("视频删除成功");
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getMessage(e));
+            throw new CollegeException(ResultCodeEnum.VIDEO_DELETE_ALIYUN_ERROR);
+        }
+    }
+
+    @DeleteMapping("remove")
+    public R removeVideoByIdList(
+            @ApiParam(value = "阿里云视频id列表", required = true)
+            @RequestBody List<String> videoIdList){
+
+        try {
+            videoService.removeVideoByIdList(videoIdList);
+            return  R.ok().message("视频删除成功");
         } catch (Exception e) {
             log.error(ExceptionUtils.getMessage(e));
             throw new CollegeException(ResultCodeEnum.VIDEO_DELETE_ALIYUN_ERROR);

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xn2001.college.service.edu.entity.Course;
 import com.xn2001.college.service.edu.entity.vo.CoursePublishVo;
 import com.xn2001.college.service.edu.entity.vo.CourseVo;
+import com.xn2001.college.service.edu.entity.vo.WebCourseVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -28,4 +29,6 @@ public interface CourseMapper extends BaseMapper<Course> {
             @Param(Constants.WRAPPER) QueryWrapper<CourseVo> queryWrapper);
 
     CoursePublishVo selectCoursePublishVoById(String id);
+
+    WebCourseVo selectWebCourseVoById(String courseId);
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xn2001.college.service.cms.mapper.AdMapper">
+
+    <select id="selectPageByQueryWrapper" resultType="com.xn2001.college.service.cms.entity.vo.AdVo">
+        SELECT
+            a.id,
+            a.title,
+            a.sort,
+            t.title AS type
+        FROM cms_ad a
+        LEFT JOIN cms_ad_type t ON a.type_id = t.id
+        ${ew.customSqlSegment}
+    </select>
+</mapper>

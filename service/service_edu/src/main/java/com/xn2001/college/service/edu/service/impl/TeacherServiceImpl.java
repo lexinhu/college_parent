@@ -4,15 +4,18 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xn2001.college.common.base.result.R;
+import com.xn2001.college.service.edu.entity.Course;
 import com.xn2001.college.service.edu.entity.Teacher;
 import com.xn2001.college.service.edu.entity.vo.TeacherQueryVo;
 import com.xn2001.college.service.edu.feign.OssFileService;
+import com.xn2001.college.service.edu.mapper.CourseMapper;
 import com.xn2001.college.service.edu.mapper.TeacherMapper;
 import com.xn2001.college.service.edu.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +32,9 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
 
     @Autowired
     private OssFileService ossFileService;
+
+    @Autowired
+    private CourseMapper courseMapper;
 
     @Override
     public Page<Teacher> selectPage(Page<Teacher> pageParam, TeacherQueryVo teacherQueryVo) {
@@ -72,7 +78,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     public List<Map<String, Object>> selectNameListByKey(String key) {
         QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
         queryWrapper.select("name");
-        queryWrapper.likeRight("name",key);
+        queryWrapper.likeRight("name", key);
 
         return baseMapper.selectMaps(queryWrapper);
     }
@@ -82,9 +88,9 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         //根据ID查询讲师Avatar头像url地址
         Teacher teacher = baseMapper.selectById(id);
 
-        if (teacher!=null){
+        if (teacher != null) {
             String avatar = teacher.getAvatar();
-            if (!StringUtils.isEmpty(avatar)){
+            if (!StringUtils.isEmpty(avatar)) {
                 R r = ossFileService.removeFile(avatar);
                 return r.getSuccess();
             }
@@ -96,9 +102,37 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     public boolean updateById(Teacher entity) {
         //根据ID查询讲师原的 Avatar 头像url地址并对比进行删除
         Teacher teacher = baseMapper.selectById(entity.getId());
-        if (!StringUtils.isEmpty(teacher.getAvatar()) && !teacher.getAvatar().equals(entity.getAvatar())){
+        if (!StringUtils.isEmpty(teacher.getAvatar()) && !teacher.getAvatar().equals(entity.getAvatar())) {
             ossFileService.removeFile(teacher.getAvatar());
         }
         return super.updateById(entity);
+    }
+
+
+    /**
+     * 根据讲师id获取讲师详情页数据
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Map<String, Object> selectTeacherInfoById(String id) {
+        //获取讲师信息
+        Teacher teacher = baseMapper.selectById(id);
+        //根据讲师id获取讲师课程
+        List<Course> courseList = courseMapper.selectList(new QueryWrapper<Course>().eq("teacher_id", id));
+        Map<String, Object> map = new HashMap<>();
+        map.put("teacher", teacher);
+        map.put("courseList", courseList);
+        return map;
+    }
+
+    @Override
+    public List<Teacher> selectHotTeacher() {
+
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByAsc("sort");
+        queryWrapper.last("limit 4");
+        return baseMapper.selectList(queryWrapper);
     }
 }

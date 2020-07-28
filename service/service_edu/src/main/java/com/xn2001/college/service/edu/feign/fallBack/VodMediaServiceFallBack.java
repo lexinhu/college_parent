@@ -15,6 +15,12 @@ import java.util.List;
 @Slf4j
 public class VodMediaServiceFallBack implements VodMediaService {
     @Override
+    public R removeVideo(String vodId) {
+        log.info("熔断保护");
+        return R.error();
+    }
+
+    @Override
     public R removeVideoByIdList(List<String> videoIdList) {
         log.info("熔断保护");
         return R.error().message("调用超时");

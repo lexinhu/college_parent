@@ -15,6 +15,7 @@
         <module>service_edu</module>
         <module>service_oss</module>
         <module>service_vod</module>
+        <module>service_cms</module>
     </modules>
     <dependencies>
         <!--服务容错-->
