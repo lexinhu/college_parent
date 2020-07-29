@@ -13,6 +13,7 @@ import com.xn2001.college.service.edu.mapper.*;
 import com.xn2001.college.service.edu.service.CourseService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -235,6 +236,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         return baseMapper.selectWebCourseVoById(id);
     }
 
+    @Cacheable(value = "index", key = "'selectHotCourse'")
     @Override
     public List<Course> selectHotCourse() {
 

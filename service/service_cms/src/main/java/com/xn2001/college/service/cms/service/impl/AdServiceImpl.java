@@ -47,9 +47,9 @@ public class AdServiceImpl extends ServiceImpl<AdMapper, Ad> implements AdServic
     @Override
     public boolean removeAdImageById(String id) {
         Ad ad = baseMapper.selectById(id);
-        if(ad != null) {
+        if (ad != null) {
             String imagesUrl = ad.getImageUrl();
-            if(!StringUtils.isEmpty(imagesUrl)){
+            if (!StringUtils.isEmpty(imagesUrl)) {
                 //删除图片
                 R r = ossFileService.removeFile(imagesUrl);
                 return r.getSuccess();
@@ -58,7 +58,12 @@ public class AdServiceImpl extends ServiceImpl<AdMapper, Ad> implements AdServic
         return false;
     }
 
-    @Cacheable(value = "index",key = "'selectByAdTypeId'")
+    /**
+     * 查询redis缓存中是否存在需要的数据 hasKey
+     * 如果缓存不存在从数据库中取出数据,并将数据存入缓存 set
+     * 如果缓存存在则从缓存中读取数据 get
+     */
+    @Cacheable(value = "index", key = "'selectByAdTypeId'")
     @Override
     public List<Ad> selectByAdTypeId(String adTypeId) {
 

@@ -12,6 +12,7 @@ import com.xn2001.college.service.edu.mapper.CourseMapper;
 import com.xn2001.college.service.edu.mapper.TeacherMapper;
 import com.xn2001.college.service.edu.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -127,6 +128,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         return map;
     }
 
+    @Cacheable(value = "index", key = "'selectHotTeacher'")
     @Override
     public List<Teacher> selectHotTeacher() {
 
