@@ -37,3 +37,11 @@ mybatis-plus:
   mapper-locations: classpath:**/xml/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+aliyun:
+  oss:
+    endpoint:
+    keyid:
+    keysecret:
+    #bucket可以在控制台创建，也可以使用java代码创建，注意先测试bucket是否已被占用
+    bucketname:

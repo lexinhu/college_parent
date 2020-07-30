@@ -31,14 +31,12 @@ public class ApiAdController {
     @ApiOperation("根据推荐位id显示广告推荐")
     @GetMapping("list/{adTypeId}")
     public R listByAdTypeId(@ApiParam(value = "推荐位id", required = true) @PathVariable String adTypeId) {
-
         List<Ad> ads = adService.selectByAdTypeId(adTypeId);
         return R.ok().data("items", ads);
     }
 
     @PostMapping("save-test")
     public R saveAd(@RequestBody Ad ad){
-        //redisTemplate.opsForValue().set("ad1", ad);
         redisTemplate.opsForValue().set("index::ad", ad);
         return R.ok();
     }
