@@ -37,3 +37,12 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #mybatis日志
   mapper-locations: classpath:**/xml/*.xml
+
+wx:
+  open:
+    # 微信开放平台 appid
+    appId:
+    # 微信开放平台 appsecret
+    appSecret:
+    # 微信开放平台 重定向url（guli.shop需要在微信开放平台配置）
+    redirectUri:

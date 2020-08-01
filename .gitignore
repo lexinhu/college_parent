@@ -35,3 +35,4 @@ build/
 /service/service_edu/src/main/resources/application-dev.yml
 /service/service_sms/src/main/resources/application-dev.yml
 /service/service_vod/src/main/resources/application-dev.yml
+/service/service_ucenter/src/main/resources/application-dev.yml

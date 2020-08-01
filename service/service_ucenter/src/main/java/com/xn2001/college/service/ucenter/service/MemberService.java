@@ -2,6 +2,7 @@ package com.xn2001.college.service.ucenter.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xn2001.college.service.ucenter.entity.Member;
+import com.xn2001.college.service.ucenter.entity.vo.LoginVo;
 import com.xn2001.college.service.ucenter.entity.vo.RegisterVo;
 
 /**
@@ -14,4 +15,6 @@ import com.xn2001.college.service.ucenter.entity.vo.RegisterVo;
  */
 public interface MemberService extends IService<Member> {
     void register(RegisterVo registerVo);
+
+    String login(LoginVo loginVo);
 }
