@@ -17,4 +17,11 @@ public interface MemberService extends IService<Member> {
     void register(RegisterVo registerVo);
 
     String login(LoginVo loginVo);
+
+    /**
+     * 根据openid返回用户信息
+     * @param openid
+     * @return
+     */
+    Member getByOpenid(String openid);
 }

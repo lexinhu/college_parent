@@ -18,6 +18,7 @@
         <module>service_cms</module>
         <module>service_sms</module>
         <module>service_ucenter</module>
+        <module>service_trade</module>
     </modules>
     <dependencies>
         <!--服务容错-->
