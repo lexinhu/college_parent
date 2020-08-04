@@ -2,4 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xn2001.college.service.edu.mapper.CourseCollectMapper">
 
+    <select id="selectPageByMemberId" resultType="com.xn2001.college.service.edu.entity.vo.CourseCollectVo">
+    select
+        cl.id,
+        cl.gmt_create as gmtCreate,
+        c.id as courseId,
+        c.title,
+        c.cover,
+        CONVERT(c.price, DECIMAL(8,2)) AS price,
+        c.lesson_num as lessonNum,
+        t.name as teacherName
+    from edu_course_collect cl
+    left join edu_course c on c.id = cl.course_id
+    left join edu_teacher t on t.id = c.teacher_id
+    where member_id = #{memberId}
+    order by cl.gmt_create desc
+    </select>
 </mapper>

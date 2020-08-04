@@ -7,6 +7,7 @@ import com.xn2001.college.service.base.exception.CollegeException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.jdbc.BadSqlGrammarException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2020/6/25 1:19
  **/
 @Slf4j
+@ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
@@ -23,7 +25,7 @@ public class GlobalExceptionHandler {
         //后台记录日志，可通过配置xml记录到日志文件中去
         log.error(ExceptionUtils.getMessage(e));
         //返回json数据
-        return R.error().message(ExceptionUtils.getMessage(e));
+        return R.error();
     }
 
     @ExceptionHandler(BadSqlGrammarException.class)

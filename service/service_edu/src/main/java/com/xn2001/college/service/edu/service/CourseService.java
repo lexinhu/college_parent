@@ -47,4 +47,6 @@ public interface CourseService extends IService<Course> {
     List<Course> selectHotCourse();
 
     CourseDto getCourseDtoById(String courseId);
+
+    void updateBuyCountById(String id);
 }

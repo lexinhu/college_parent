@@ -90,20 +90,21 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
         if (StringUtils.isEmpty(mobile)
                 || !FormUtils.isMobile(mobile)
                 || StringUtils.isEmpty(password)) {
-            throw new CollegeException(ResultCodeEnum.PARAM_ERROR);
+            throw new CollegeException(ResultCodeEnum.LOGIN_ERROR);
         }
+
 
         //校验手机号
         QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("mobile", mobile);
         Member member = baseMapper.selectOne(queryWrapper);
         if(member == null){
-            throw new CollegeException(ResultCodeEnum.LOGIN_MOBILE_ERROR);
+            throw new CollegeException(ResultCodeEnum.LOGIN_ERROR);
         }
 
         //校验密码
         if(!MD5.encrypt(password).equals(member.getPassword())){
-            throw new CollegeException(ResultCodeEnum.LOGIN_PASSWORD_ERROR);
+            throw new CollegeException(ResultCodeEnum.LOGIN_ERROR);
         }
 
         //检验用户是否被禁用
