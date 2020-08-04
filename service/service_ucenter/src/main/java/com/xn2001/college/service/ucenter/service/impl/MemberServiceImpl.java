@@ -7,12 +7,14 @@ import com.xn2001.college.common.base.util.FormUtils;
 import com.xn2001.college.common.base.util.JwtInfo;
 import com.xn2001.college.common.base.util.JwtUtils;
 import com.xn2001.college.common.base.util.MD5;
+import com.xn2001.college.service.base.dto.MemberDto;
 import com.xn2001.college.service.base.exception.CollegeException;
 import com.xn2001.college.service.ucenter.entity.Member;
 import com.xn2001.college.service.ucenter.entity.vo.LoginVo;
 import com.xn2001.college.service.ucenter.entity.vo.RegisterVo;
 import com.xn2001.college.service.ucenter.mapper.MemberMapper;
 import com.xn2001.college.service.ucenter.service.MemberService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -123,5 +125,13 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
         QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("openid", openid);
         return baseMapper.selectOne(queryWrapper);
+    }
+
+    @Override
+    public MemberDto getMemberDtoByMemberId(String memberId) {
+        Member member = baseMapper.selectById(memberId);
+        MemberDto memberDto = new MemberDto();
+        BeanUtils.copyProperties(member, memberDto);
+        return memberDto;
     }
 }

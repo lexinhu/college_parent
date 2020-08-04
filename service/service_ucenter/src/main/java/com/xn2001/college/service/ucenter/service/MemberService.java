@@ -1,6 +1,7 @@
 package com.xn2001.college.service.ucenter.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xn2001.college.service.base.dto.MemberDto;
 import com.xn2001.college.service.ucenter.entity.Member;
 import com.xn2001.college.service.ucenter.entity.vo.LoginVo;
 import com.xn2001.college.service.ucenter.entity.vo.RegisterVo;
@@ -24,4 +25,7 @@ public interface MemberService extends IService<Member> {
      * @return
      */
     Member getByOpenid(String openid);
+
+    MemberDto getMemberDtoByMemberId(String memberId);
+
 }

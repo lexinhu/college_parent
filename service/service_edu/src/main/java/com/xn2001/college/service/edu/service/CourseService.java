@@ -2,6 +2,7 @@ package com.xn2001.college.service.edu.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xn2001.college.service.base.dto.CourseDto;
 import com.xn2001.college.service.edu.entity.Course;
 import com.xn2001.college.service.edu.entity.form.CourseInfoForm;
 import com.xn2001.college.service.edu.entity.vo.*;
@@ -44,4 +45,6 @@ public interface CourseService extends IService<Course> {
     WebCourseVo selectWebCourseVoById(String id);
 
     List<Course> selectHotCourse();
+
+    CourseDto getCourseDtoById(String courseId);
 }

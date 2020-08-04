@@ -4,12 +4,14 @@ import com.xn2001.college.common.base.result.R;
 import com.xn2001.college.common.base.result.ResultCodeEnum;
 import com.xn2001.college.common.base.util.JwtInfo;
 import com.xn2001.college.common.base.util.JwtUtils;
+import com.xn2001.college.service.base.dto.MemberDto;
 import com.xn2001.college.service.base.exception.CollegeException;
 import com.xn2001.college.service.ucenter.entity.vo.LoginVo;
 import com.xn2001.college.service.ucenter.entity.vo.RegisterVo;
 import com.xn2001.college.service.ucenter.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +34,7 @@ public class ApiMemberController {
 
     @ApiOperation(value = "会员注册")
     @PostMapping("register")
-    public R register(@RequestBody RegisterVo registerVo){
+    public R register(@RequestBody RegisterVo registerVo) {
         memberService.register(registerVo);
         return R.ok();
     }
@@ -46,14 +48,23 @@ public class ApiMemberController {
 
     @ApiOperation(value = "根据token获取登录信息")
     @GetMapping("get-login-info")
-    public R getLoginInfo(HttpServletRequest request){
+    public R getLoginInfo(HttpServletRequest request) {
 
-        try{
+        try {
             JwtInfo jwtInfo = JwtUtils.getMemberIdByJwtToken(request);
             return R.ok().data("userInfo", jwtInfo);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("解析用户信息失败，" + e.getMessage());
             throw new CollegeException(ResultCodeEnum.FETCH_USERINFO_ERROR);
         }
+    }
+
+    @ApiOperation("根据会员id查询会员信息")
+    @GetMapping("inner/get-member-dto/{memberId}")
+    public MemberDto getMemberDtoByMemberId(
+            @ApiParam(value = "会员ID", required = true)
+            @PathVariable String memberId) {
+        MemberDto memberDto = memberService.getMemberDtoByMemberId(memberId);
+        return memberDto;
     }
 }
