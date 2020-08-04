@@ -14,7 +14,6 @@ import com.xn2001.college.service.ucenter.util.UcenterProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,7 +28,6 @@ import java.util.UUID;
  * @author 乐心湖
  * @date 2020/8/1 22:31
  **/
-@CrossOrigin
 @Controller//注意这里没有配置 @RestController
 @RequestMapping("/api/ucenter/wx")
 @Slf4j

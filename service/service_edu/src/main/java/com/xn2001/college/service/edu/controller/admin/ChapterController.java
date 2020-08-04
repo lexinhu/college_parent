@@ -23,7 +23,6 @@ import java.util.List;
  * @author 乐心湖
  * @since 2020-06-23
  */
-@CrossOrigin
 @Api(tags = "章节管理")
 @RestController
 @RequestMapping("/admin/edu/chapter")

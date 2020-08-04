@@ -18,7 +18,6 @@ import java.util.List;
  * @author 乐心湖
  * @date 2020/8/4 15:16
  **/
-@CrossOrigin
 @RestController
 @RequestMapping("/api/edu/course-collect")
 @Slf4j

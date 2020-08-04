@@ -28,4 +28,6 @@ public interface MemberService extends IService<Member> {
 
     MemberDto getMemberDtoByMemberId(String memberId);
 
+    Integer countRegisterNum(String day);
+
 }

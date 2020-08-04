@@ -10,7 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/api/sms")
 @Api(tags = "短信管理")
-@CrossOrigin //跨域
 @Slf4j
 public class ApiSmsController {
 
@@ -35,7 +37,7 @@ public class ApiSmsController {
     public R getCode(@PathVariable String mobile) throws ClientException {
 
         //校验手机号是否合法
-        if(StringUtils.isEmpty(mobile) || !FormUtils.isMobile(mobile)) {
+        if (StringUtils.isEmpty(mobile) || !FormUtils.isMobile(mobile)) {
             return R.error().message("请输入正确的手机号码");
         }
         //生成验证码

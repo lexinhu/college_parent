@@ -16,7 +16,6 @@ import java.util.List;
  * @author 乐心湖
  * @date 2020/7/28 17:55
  **/
-@CrossOrigin //解决跨域问题
 @Api(tags = "广告推荐")
 @RestController
 @RequestMapping("/api/cms/ad")

@@ -9,14 +9,16 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 乐心湖
  * @date 2020/7/28 13:21
  **/
-@Api(description = "阿里云视频点播")
-@CrossOrigin //跨域
+@Api(tags = "阿里云视频点播")
 @RestController
 @RequestMapping("/api/vod/media")
 @Slf4j

@@ -19,7 +19,6 @@ import java.io.InputStream;
  * @date 2020/6/30 23:10
  **/
 @Api(tags = "阿里云文件管理")
-@CrossOrigin
 @RestController
 @RequestMapping("/admin/oss/file")
 @Slf4j

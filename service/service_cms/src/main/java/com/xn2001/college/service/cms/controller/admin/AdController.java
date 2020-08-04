@@ -23,8 +23,7 @@ import java.util.List;
  * @author 乐心湖
  * @since 2020-07-28
  */
-@CrossOrigin //解决跨域问题
-@Api(description = "广告推荐管理")
+@Api(tags = "广告推荐管理")
 @RestController
 @RequestMapping("/admin/cms/ad")
 @Slf4j

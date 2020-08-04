@@ -19,6 +19,7 @@
         <module>service_sms</module>
         <module>service_ucenter</module>
         <module>service_trade</module>
+        <module>service_statistics</module>
     </modules>
     <dependencies>
         <!--服务容错-->

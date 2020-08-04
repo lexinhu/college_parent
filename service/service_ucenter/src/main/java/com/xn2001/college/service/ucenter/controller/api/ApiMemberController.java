@@ -22,8 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author 乐心湖
  * @date 2020/7/29 19:42
  **/
-@Api(description = "会员管理")
-@CrossOrigin
+@Api(tags = "会员管理")
 @RestController
 @RequestMapping("/api/ucenter/member")
 @Slf4j

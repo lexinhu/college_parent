@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
  * @author 乐心湖
  * @since 2020-06-23
  */
-@CrossOrigin
 @Api(tags = "课时管理")
 @RestController
 @RequestMapping("/admin/edu/video")
