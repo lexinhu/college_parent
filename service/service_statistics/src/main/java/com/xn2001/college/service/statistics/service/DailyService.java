@@ -1,7 +1,9 @@
 package com.xn2001.college.service.statistics.service;
 
-import com.xn2001.college.service.statistics.entity.Daily;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xn2001.college.service.statistics.entity.Daily;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -13,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface DailyService extends IService<Daily> {
     void createStatisticsByDay(String day);
+
+    Map<String, Map<String, Object>> getChartData(String begin, String end);
 }

@@ -15,32 +15,44 @@ spring:
       discovery:
         locator:
           enabled: true # gateway可以发现nacos中的微服务
+
       routes:
         - id: service-edu
           uri: lb://service-edu
           predicates:
             - Path=/user/**, /*/edu/**
+
         - id: service-cms
           uri: lb://service-cms
           predicates:
             - Path=/*/cms/**
+
         - id: service-oss
           uri: lb://service-oss
           predicates:
             - Path=/*/oss/**
+
         - id: service-sms
           uri: lb://service-sms
           predicates:
             - Path=/*/sms/**
+
         - id: service-trade
           uri: lb://service-trade
           predicates:
             - Path=/*/trade/**
+
         - id: service-ucenter
           uri: lb://service-ucenter
           predicates:
             - Path=/*/ucenter/**
+
         - id: service-vod
           uri: lb://service-vod
           predicates:
             - Path=/*/vod/**
+
+        - id: service-statistics
+          uri: lb://service-statistics
+          predicates:
+            - Path=/*/statistics/**

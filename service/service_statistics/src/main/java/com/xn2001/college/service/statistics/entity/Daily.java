@@ -1,9 +1,7 @@
 package com.xn2001.college.service.statistics.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import BaseEntity;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.xn2001.college.service.base.model.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -22,10 +20,10 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("statistics_daily")
-@ApiModel(value="Daily对象", description="网站统计日数据")
+@ApiModel(value = "Daily对象", description = "网站统计日数据")
 public class Daily extends BaseEntity {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "统计日期")
     private String dateCalculated;
