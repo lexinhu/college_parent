@@ -48,7 +48,6 @@ public class ApiMemberController {
     @ApiOperation(value = "根据token获取登录信息")
     @GetMapping("get-login-info")
     public R getLoginInfo(HttpServletRequest request) {
-
         try {
             JwtInfo jwtInfo = JwtUtils.getMemberIdByJwtToken(request);
             return R.ok().data("userInfo", jwtInfo);
