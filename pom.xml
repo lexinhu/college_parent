@@ -167,18 +167,6 @@
             </dependency>
 
             <dependency>
-                <groupId>commons-dbutils</groupId>
-                <artifactId>commons-dbutils</artifactId>
-                <version>${commons-dbutils.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba.otter</groupId>
-                <artifactId>canal.client</artifactId>
-                <version>${canal.client.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
                 <version>${alibaba.easyexcel.version}</version>
@@ -190,14 +178,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
