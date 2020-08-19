@@ -28,13 +28,5 @@ target/
 /.nb-gradle/
 build/
 
-### VS Code ###
-.vscode/
-/guli_admin/
 /logger/
-/service/service_edu/src/main/resources/application-dev.yml
-/service/service_sms/src/main/resources/application-dev.yml
-/service/service_vod/src/main/resources/application-dev.yml
-/service/service_ucenter/src/main/resources/application-dev.yml
-/service/service_oss/src/main/resources/application-dev.yml
-/service/service_trade/src/main/resources/application-dev.yml
+**/*/application-dev.yml

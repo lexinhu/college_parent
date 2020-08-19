@@ -33,7 +33,6 @@ public class MediaController {
     public R uploadVideo(
             @ApiParam(name = "file", value = "文件", required = true)
             @RequestParam("file") MultipartFile file) {
-
         try {
             InputStream inputStream = file.getInputStream();
             String originalFilename = file.getOriginalFilename();
