@@ -11,21 +11,27 @@
 ## 项目结构
 
 ```
-college_parent                    // 后端项目
-├── common                        // 通用代码层
-│        └── common_util                // 工具类
-│        └── service_base            // 业务通用代码
-├── infrastructure                // 对外开放网关层
-│        └── api_gateway                // gateway网关
-├── service                        // 业务代码层
-│        └── service_cms                // 前台内容api
-│        └── service_edu                // 后台内容api
-│        └── service_oss                // 阿里云oss文件存储
-│        └── service_sms                // 阿里云短信分发
-│        └── service_statistics        // 统计报表模块
-│        └── service_trade            // 课程交易模块
-│        └── service_ucenter            // 用户模块
-│        └── service_vod                // 阿里云vod视频存储
+college_parent                  // 后端项目
+├── common                      // 通用代码层
+│       └── common_util             // 工具类
+│       └── service_base            // 业务通用代码
+├── infrastructure              // 对外开放网关层
+│       └── api_gateway             // gateway网关
+├── service                     // 业务代码层
+│       └── service_cms             // 前台内容api
+│       └── service_edu             // 后台内容api
+│       └── service_oss             // 阿里云oss文件存储
+│       └── service_sms             // 阿里云短信分发
+│       └── service_statistics      // 统计报表模块
+│       └── service_trade           // 课程交易模块
+│       └── service_ucenter         // 用户模块
+│       └── service_vod             // 阿里云vod视频存储
+├── sql                         // 数据库文件
+│       └── edu_cms.sql             // 前台内容数据库表
+│       └── edu_college.sql         // 学院核心数据库表
+│       └── edu_statistics.sql      // 统计内容数据库表
+│       └── edu_trade.sql           // 订单交易数据表
+│       └── edu_ucenter.sql         // 用户信息数据表
 ```
 
 ## 项目演示
