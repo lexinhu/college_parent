@@ -1,32 +1,14 @@
 HELP.md
-target/
-.mvn
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+**/target/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
+# IDEA自带文件
 .idea
 *.iws
 *.iml
 *.ipr
+/mvnw.cmd
+/mvnw
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-
+# 日志文件
 /logger/
-**/*/application-dev.yml
+/*/application-dev.yml
