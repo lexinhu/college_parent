@@ -178,6 +178,6 @@ public class ApiWxController {
         String jwtToken = JwtUtils.getJwtToken(jwtInfo, 1800);
 
         //携带token跳转
-        return "redirect:http://localhost:3000?token=" + jwtToken;
+        return "redirect:http://127.0.0.1:3000?token=" + jwtToken;
     }
 }

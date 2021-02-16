@@ -1,18 +1,18 @@
 server:
-  port: 8160 # 服务端口
+  port: 8160 #服务端口
 
 spring:
   profiles:
-    active: dev # 环境设置
+    active: dev #环境设置
   application:
-    name: service-ucenter # 服务名
+    name: service-ucenter #服务名
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 # nacos服务地址
-  #spring:
+        server-addr: 127.0.0.1:8848
+
   redis:
-    host: localhost
+    host: 127.0.0.1
     port: 6379
     database: 0
     password:  #默认为空
@@ -23,26 +23,27 @@ spring:
         max-idle: 8     #最大空闲连接，默认8
         min-idle: 0     #最小空闲连接，默认0
 
-  datasource: # mysql数据库连接
+  datasource: #mysql数据库连接
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/edu_ucenter?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://127.0.0.1:3306/edu_ucenter?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
     username: root
     password: 123456
-  #spring:
+
   jackson: #返回json的全局时间格式
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 
 mybatis-plus:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #mybatis日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:**/xml/*.xml
 
+#微信登录
 wx:
   open:
-    # 微信开放平台 appid
+    #微信开放平台appId
     appId:
-    # 微信开放平台 appsecret
+    #微信开放平台appSecret
     appSecret:
-    # 微信开放平台 重定向url（guli.shop需要在微信开放平台配置）
+    #微信开放平台-重定向url
     redirectUri:

@@ -22,6 +22,11 @@
         <module>service_statistics</module>
     </modules>
     <dependencies>
+        <!--nacos配置-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
         <!--服务容错-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

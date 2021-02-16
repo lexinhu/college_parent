@@ -34,6 +34,7 @@ public class ApiMediaController {
 
         try {
             String playAuth = videoService.getPlayAuth(videoSourceId);
+            System.out.println(playAuth);
             return R.ok().message("获取播放凭证成功").data("playAuth", playAuth);
         } catch (Exception e) {
             log.error(ExceptionUtils.getMessage(e));

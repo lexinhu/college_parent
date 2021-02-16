@@ -4,7 +4,7 @@
  Source Server         : 本机
  Source Server Type    : MySQL
  Source Server Version : 80020
- Source Host           : localhost:3306
+ Source Host           : 127.0.0.1:3306
  Source Schema         : edu_trade
 
  Target Server Type    : MySQL

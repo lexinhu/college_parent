@@ -1,20 +1,20 @@
 server:
-  port: 9110 # 服务端口
+  port: 9110 #服务端口
 
 spring:
   profiles:
-    active: dev # 环境设置
+    active: dev #环境设置
   application:
-    name: infrastructure-apigateway # 服务名
+    name: infrastructure-apigateway #服务名
 
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 # nacos服务地址
+        server-addr: 127.0.0.1:8848 #nacos服务地址
     gateway:
       discovery:
         locator:
-          enabled: true # gateway可以发现nacos中的微服务
+          enabled: true #gateway可以发现nacos中的微服务
 
       routes:
         - id: service-edu

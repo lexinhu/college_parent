@@ -6,7 +6,7 @@ spring:
   application:
     name: service-edu
   datasource:
-    url: jdbc:mysql://localhost:3306/edu_college?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://127.0.0.1:3306/edu_college?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
@@ -19,11 +19,11 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 # nacos服务地址
+        server-addr: 127.0.0.1:8848
     sentinel:
       transport:
         port: 8081 #跟控制台交流的端口，随意指定一个未使用的端口即可
-        dashboard: localhost:8080 # 指定控制台服务的地址
+        dashboard: 127.0.0.1:8080 #指定控制台服务的地址
 
 ribbon:
   ConnectTimeout: 15000 #连接建立的超时时长，默认1秒
@@ -38,10 +38,10 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+#阿里云oss相关配置
 aliyun:
   oss:
     endpoint:
     keyid:
     keysecret:
-    #bucket可以在控制台创建，也可以使用java代码创建，注意先测试bucket是否已被占用
     bucketname:

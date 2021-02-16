@@ -1,18 +1,17 @@
 server:
-  port: 8150 # 服务端口
+  port: 8150 #服务端口
 
 spring:
   profiles:
-    active: dev # 环境设置
+    active: dev #环境设置
   application:
-    name: service-sms # 服务名
+    name: service-sms #服务名
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848 # nacos服务地址
-  #spring:
+        server-addr: 127.0.0.1:8848
   redis:
-    host: localhost
+    host: 127.0.0.1
     port: 6379
     database: 0
     password:  #默认为空
@@ -23,7 +22,7 @@ spring:
         max-idle: 8     #最大空闲连接，默认8
         min-idle: 0     #最小空闲连接，默认0
 
-#阿里云短信
+#阿里云短信配置
 aliyun:
   sms:
     regionId:
