@@ -1,6 +1,6 @@
 package com.xn2001.college.service.vod.service;
 
-import com.aliyuncs.exceptions.ClientException;
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 
 import java.io.InputStream;
 import java.util.List;
@@ -10,11 +10,8 @@ import java.util.List;
  * @date 2020/7/18 17:13
  **/
 public interface VideoService {
-    String uploadVideo(InputStream file, String originalFilename);
 
-    void removeVideo(String videoId) throws ClientException;
+    void removeVideo(String videoId) throws TencentCloudSDKException;
 
-    void removeVideoByIdList(List<String> videoIdList) throws ClientException;
-
-    String getPlayAuth(String videoSourceId) throws ClientException;
+    void removeVideoByIdList(List<String> videoIdList) ;
 }

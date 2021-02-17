@@ -10,10 +10,8 @@ import org.springframework.stereotype.Component;
  **/
 @Data
 @Component
-@ConfigurationProperties(prefix="aliyun.vod")
+@ConfigurationProperties(prefix="qcloud")
 public class VodProperties {
-    private String keyid;
-    private String keysecret;
-    private String templateGroupId;
-    private String workflowId;
+    private String secretId;
+    private String secretKey;
 }

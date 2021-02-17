@@ -24,3 +24,8 @@ aliyun:
     templateGroupId:
     #工作流id
     workflowId:
+
+#腾讯云vod视频存储
+qcloud:
+  secretId:
+  secretKey:

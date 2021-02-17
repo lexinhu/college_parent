@@ -35,6 +35,8 @@
         <aliyun-java-sdk-core.version>4.5.1</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-vod.version>2.15.10</aliyun-java-sdk-vod.version>
         <aliyun-sdk-vod-upload.version>1.4.13</aliyun-sdk-vod-upload.version>
+        <tencentcloudapi.version>3.1.209</tencentcloudapi.version>
+        <qcloud.vod_api.version>2.1.4</qcloud.vod_api.version>
         <fastjson.version>1.2.28</fastjson.version>
         <gson.version>2.8.2</gson.version>
         <json.version>20170516</json.version>
@@ -148,6 +150,17 @@
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-sdk-vod-upload</artifactId>
                 <version>${aliyun-sdk-vod-upload.version}</version>
+            </dependency>
+            <!--腾讯云sdk开发工具-->
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java</artifactId>
+                <version>${tencentcloudapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qcloud</groupId>
+                <artifactId>vod_api</artifactId>
+                <version>${qcloud.vod_api.version}</version>
             </dependency>
             <!--json-->
             <dependency>

@@ -22,6 +22,10 @@ public enum ResultCodeEnum {
     FILE_DELETE_ERROR(false, 21005, "文件刪除错误"),
     EXCEL_DATA_IMPORT_ERROR(false, 21006, "Excel数据导入错误"),
 
+    VIDEO_UPLOAD_TENCENT_ERROR(false,22008,"视频上传至腾讯云点播失败"),
+    VIDEO_DELETE_TENCENT_ERROR(false,22009,"腾讯云点播视频删除失败"),
+    VIDEO_SIGN_TENCENT_ERROR(false,22010,"腾讯云点播上传签名获取失败"),
+
     VIDEO_UPLOAD_ALIYUN_ERROR(false, 22001, "视频上传至阿里云失败"),
     VIDEO_UPLOAD_TOMCAT_ERROR(false, 22002, "视频上传至业务服务器失败"),
     VIDEO_DELETE_ALIYUN_ERROR(false, 22003, "阿里云视频文件删除失败"),
