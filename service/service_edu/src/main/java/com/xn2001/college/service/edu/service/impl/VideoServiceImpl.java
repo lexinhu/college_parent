@@ -31,7 +31,7 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
     @Override
     public void removeMediaVideoById(String id) {
         log.warn("VideoServiceImpl：video id = " + id);
-        //根据videoid找到视频id
+        //根据videoId找到视频id
         Video video = baseMapper.selectById(id);
         String videoSourceId = video.getVideoSourceId();
         log.warn("VideoServiceImpl：videoSourceId= " + videoSourceId);
@@ -47,8 +47,10 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
         List<Map<String, Object>> maps = baseMapper.selectMaps(queryWrapper);
         List<String> videoSourceIdList = new ArrayList<>();
         for (Map<String, Object> map : maps) {
-            String videoSourceId = (String)map.get("video_source_id");
-            videoSourceIdList.add(videoSourceId);
+            if (map != null) {
+                String videoSourceId = (String) map.get("video_source_id");
+                videoSourceIdList.add(videoSourceId);
+            }
         }
         vodMediaService.removeVideoByIdList(videoSourceIdList);
     }
@@ -65,13 +67,15 @@ public class VideoServiceImpl extends ServiceImpl<VideoMapper, Video> implements
     }
 
     /**
-     * 获取阿里云视频id列表
+     * 获取腾讯云视频id列表
      */
-    private List<String> getVideoSourceIdList(List<Map<String, Object>> maps){
+    private List<String> getVideoSourceIdList(List<Map<String, Object>> maps) {
         List<String> videoSourceIdList = new ArrayList<>();
         for (Map<String, Object> map : maps) {
-            String videoSourceId = (String)map.get("video_source_id");
-            videoSourceIdList.add(videoSourceId);
+            if (map != null) {
+                String videoSourceId = (String) map.get("video_source_id");
+                videoSourceIdList.add(videoSourceId);
+            }
         }
         return videoSourceIdList;
     }

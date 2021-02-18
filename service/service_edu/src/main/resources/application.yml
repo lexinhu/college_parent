@@ -11,6 +11,11 @@ spring:
     username: root
     password: 123456
 
+  servlet:
+    multipart:
+      max-file-size: 2048MB #最大上传单个文件大小：默认1M
+      max-request-size: 2048MB #最大置总上传的数据大小 ：默认10M
+
   #日期格式化
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
