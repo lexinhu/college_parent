@@ -20,6 +20,7 @@
         <module>service_ucenter</module>
         <module>service_trade</module>
         <module>service_statistics</module>
+        <module>service-mail</module>
     </modules>
     <dependencies>
         <!--nacos配置-->

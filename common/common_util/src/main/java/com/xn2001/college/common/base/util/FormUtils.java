@@ -20,4 +20,13 @@ public class FormUtils {
         return m.matches();
     }
 
+    /**
+     * 邮箱验证
+     */
+    public static boolean isEmail(String str) {
+        Pattern p = Pattern.compile("^\\w+@[a-z0-9]+\\.[a-z]{2,4}$"); // 验证邮箱
+        Matcher m = p.matcher(str);
+        return m.matches();
+    }
+
 }

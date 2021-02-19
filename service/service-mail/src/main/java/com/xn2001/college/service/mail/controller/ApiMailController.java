@@ -1,10 +1,10 @@
-package com.xn2001.college.service.cms.controller;
+package com.xn2001.college.service.mail.controller;
 
-import com.aliyuncs.exceptions.ClientException;
+import com.netflix.client.ClientException;
 import com.xn2001.college.common.base.result.R;
 import com.xn2001.college.common.base.util.FormUtils;
 import com.xn2001.college.common.base.util.RandomUtils;
-import com.xn2001.college.service.cms.service.SmsService;
+import com.xn2001.college.service.mail.service.MailService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,34 +19,37 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author 乐心湖
- * @date 2020/7/29 18:44
+ * @date 2021/2/19 16:58
  **/
 @RestController
-@RequestMapping("/api/sms")
-@Api(tags = "短信管理")
+@RequestMapping("/api/mail")
+@Api(tags = "邮箱验证码")
 @Slf4j
-public class ApiSmsController {
-
+public class ApiMailController {
     @Autowired
-    private SmsService smsService;
+    private MailService mailService;
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
-    @GetMapping("send/{mobile}")
-    public R getCode(@PathVariable String mobile) throws ClientException {
+    @GetMapping("send/{email}")
+    public R getCode(@PathVariable String email) {
 
-        //校验手机号是否合法
-        if (StringUtils.isEmpty(mobile) || !FormUtils.isMobile(mobile)) {
-            return R.error().message("请输入正确的手机号码");
+        //校验邮箱是否合法
+        if (StringUtils.isEmpty(email) || !FormUtils.isEmail(email)) {
+            return R.error().message("请输入正确的邮箱");
         }
         //生成验证码
         String checkCode = RandomUtils.getFourBitRandom();
         //发送验证码
-        smsService.send(mobile, checkCode);
+        try {
+            mailService.sendCode(email, "小湖视频网-注册验证码", checkCode, "code.html");
+        } catch (Exception e) {
+            // TODO: 2021/2/19 异常待处理
+        }
         //将验证码存入redis缓存
-        redisTemplate.opsForValue().set(mobile, checkCode, 5, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(email, checkCode, 5, TimeUnit.MINUTES);
 
-        return R.ok().message("短信发送成功");
+        return R.ok().message("邮件发送成功");
     }
 }

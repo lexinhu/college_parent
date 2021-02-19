@@ -1,4 +1,4 @@
-package com.xn2001.college.service.cms.Service;
+package com.xn2001.college.service.cms.service;
 
 import com.aliyuncs.exceptions.ClientException;
 

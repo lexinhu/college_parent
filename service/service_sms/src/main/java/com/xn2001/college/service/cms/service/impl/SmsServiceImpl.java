@@ -1,4 +1,4 @@
-package com.xn2001.college.service.cms.Service.impl;
+package com.xn2001.college.service.cms.service.impl;
 
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
@@ -10,7 +10,7 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.google.gson.Gson;
 import com.xn2001.college.common.base.result.ResultCodeEnum;
 import com.xn2001.college.service.base.exception.CollegeException;
-import com.xn2001.college.service.cms.Service.SmsService;
+import com.xn2001.college.service.cms.service.SmsService;
 import com.xn2001.college.service.cms.util.SmsProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
