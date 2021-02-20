@@ -5,6 +5,7 @@ import com.xn2001.college.service.base.dto.CourseDto;
 import com.xn2001.college.service.trade.feign.EduCourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author 乐心湖
@@ -19,6 +20,7 @@ public class EduCourseServiceFallBack implements EduCourseService {
         return null;
     }
 
+    @GetMapping("/api/edu/course/inner/update-buy-count/{id}")
     @Override
     public R updateBuyCountById(String id) {
         log.error("熔断器被执行");

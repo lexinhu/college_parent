@@ -38,7 +38,9 @@ public class ApiOrderController {
     @PostMapping("auth/save/{courseId}")
     public R save(@PathVariable String courseId, HttpServletRequest request) {
         JwtInfo jwtInfo = JwtUtils.getMemberIdByJwtToken(request);
-        if (jwtInfo==null){
+        System.out.println(jwtInfo);
+        System.out.println("toHere");
+        if (jwtInfo == null) {
             throw new CollegeException(ResultCodeEnum.LOGIN_AUTH);
         }
         String orderId = orderService.saveOrder(courseId, jwtInfo.getId());
@@ -84,10 +86,11 @@ public class ApiOrderController {
     @GetMapping("/query-pay-status/{orderNo}")
     public R queryPayStatus(@PathVariable String orderNo) {
         boolean result = orderService.queryPayStatus(orderNo);
-        if (result) {//支付成功
+        if (result) {
             return R.ok().message("支付成功");
         }
-        return R.setResult(ResultCodeEnum.PAY_RUN);//支付中
+        //支付中
+        return R.setResult(ResultCodeEnum.PAY_RUN);
     }
 }
 

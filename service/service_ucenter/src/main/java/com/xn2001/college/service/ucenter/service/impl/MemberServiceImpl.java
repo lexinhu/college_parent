@@ -33,7 +33,7 @@ import org.springframework.util.StringUtils;
 public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> implements MemberService {
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     /**
      * 会员注册
@@ -46,36 +46,52 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
 
         String nickname = registerVo.getNickname();
         String mobile = registerVo.getMobile();
+        String email = registerVo.getEmail();
         String password = registerVo.getPassword();
         String code = registerVo.getCode();
 
-        //校验参数
-        if (StringUtils.isEmpty(mobile) || !FormUtils.isMobile(mobile)
-                || StringUtils.isEmpty(password) || StringUtils.isEmpty(code)
-                || StringUtils.isEmpty(nickname)) {
+        //手机号和邮箱不能同时为空
+        if (StringUtils.isEmpty(mobile) && StringUtils.isEmpty(email)) {
             throw new CollegeException(ResultCodeEnum.PARAM_ERROR);
         }
 
-        //校验验证码
-        String checkCode = (String) redisTemplate.opsForValue().get(mobile);
-        if (!code.equals(checkCode)) {
-            throw new CollegeException(ResultCodeEnum.CODE_ERROR);
+        //优先校验手机，没有手机则校验邮箱
+        //注意: 这里需要使用 '|' 要两边都能检测到
+        if (!StringUtils.isEmpty(mobile) | FormUtils.isMobile(mobile)) {
+            //校验验证码
+            String checkCode = redisTemplate.opsForValue().get(mobile);
+            if (!code.equals(checkCode)) {
+                throw new CollegeException(ResultCodeEnum.CODE_ERROR);
+            }
+        } else if (!StringUtils.isEmpty(email) | FormUtils.isMobile(email)) {
+            //校验验证码
+            String checkCode = redisTemplate.opsForValue().get(email);
+            if (!code.equals(checkCode)) {
+                throw new CollegeException(ResultCodeEnum.CODE_ERROR);
+            }
         }
 
-        //是否被注册
+        //是否被注册的条件
         QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("mobile", mobile);
+        if (!StringUtils.isEmpty(mobile)){
+            queryWrapper.lambda().eq(Member::getMobile,mobile);
+        }
+        if (!StringUtils.isEmpty(email)){
+            queryWrapper.lambda().or().eq(Member::getEmail,email);
+        }
         Integer count = baseMapper.selectCount(queryWrapper);
         if (count > 0) {
-            throw new CollegeException(ResultCodeEnum.REGISTER_MOBLE_ERROR);
+            throw new CollegeException(ResultCodeEnum.REGISTER_USERINFO_ERROR);
         }
 
         //注册
         Member member = new Member();
         member.setNickname(nickname);
         member.setMobile(mobile);
+        member.setEmail(email);
         member.setPassword(MD5.encrypt(password));
         member.setDisabled(false);
+        //默认头像
         member.setAvatar("https://edu-college.oss-cn-shenzhen.aliyuncs.com/avatar/2020/07/27/20200727205056.jpg");
         baseMapper.insert(member);
     }
@@ -83,32 +99,26 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     @Override
     public String login(LoginVo loginVo) {
 
-        String mobile = loginVo.getMobile();
+        String userInfo = loginVo.getUserInfo();
         String password = loginVo.getPassword();
 
-        //校验参数
-        if (StringUtils.isEmpty(mobile)
-                || !FormUtils.isMobile(mobile)
-                || StringUtils.isEmpty(password)) {
-            throw new CollegeException(ResultCodeEnum.LOGIN_ERROR);
-        }
-
-
-        //校验手机号
+        //使用邮箱或者手机号登录
         QueryWrapper<Member> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("mobile", mobile);
+        queryWrapper.lambda().eq(Member::getMobile, userInfo).or().eq(Member::getEmail, userInfo);
+        System.out.println(userInfo);
         Member member = baseMapper.selectOne(queryWrapper);
-        if(member == null){
+
+        if (member == null) {
             throw new CollegeException(ResultCodeEnum.LOGIN_ERROR);
         }
 
         //校验密码
-        if(!MD5.encrypt(password).equals(member.getPassword())){
+        if (!MD5.encrypt(password).equals(member.getPassword())) {
             throw new CollegeException(ResultCodeEnum.LOGIN_ERROR);
         }
 
         //检验用户是否被禁用
-        if(member.getDisabled()){
+        if (member.getDisabled()) {
             throw new CollegeException(ResultCodeEnum.LOGIN_DISABLED_ERROR);
         }
 

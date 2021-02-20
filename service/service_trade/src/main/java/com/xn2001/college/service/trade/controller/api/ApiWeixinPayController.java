@@ -39,9 +39,19 @@ public class ApiWeixinPayController {
 
     @GetMapping("create-native/{orderNo}")
     public R createNative(@PathVariable String orderNo, HttpServletRequest request) {
-        String remoteAddr = request.getRemoteAddr();
-        Map map = weixinPayService.createNative(orderNo, remoteAddr);
-        return R.ok().data(map);
+
+        // 微信支付
+        //String remoteAddr = request.getRemoteAddr();
+        //Map map = weixinPayService.createNative(orderNo, remoteAddr);
+
+        Map<String, String> orderMap = new HashMap<>();
+        orderMap.put("out_trade_no", orderNo); //订单号
+        orderMap.put("total_fee", "1"); //金额数, 单位是分
+        orderMap.put("result_code", "1"); //支付状态
+        orderMap.put("transaction_id", "666666666666666"); //流水号
+        String courseId = orderService.updateOrderStatus(orderMap);
+
+        return R.ok().data("out_trade_no", orderNo).data("total_fee", "1").data("course_id", courseId);
     }
 
     /**

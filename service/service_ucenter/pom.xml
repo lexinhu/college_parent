@@ -11,8 +11,6 @@
 
     <artifactId>service_ucenter</artifactId>
 
-
-
     <build>
         <!-- 项目打包时会将java目录中的*.xml文件也进行打包 -->
         <resources>

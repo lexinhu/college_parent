@@ -41,6 +41,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Autowired
     private UcenterMemberService ucenterMemberService;
 
+    @Autowired
+    private PayLogMapper payLogMapper;
+
     @Override
     public String saveOrder(String courseId, String memberId) {
         //查询当前用户是否已有当前课程的订单
@@ -48,7 +51,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         queryWrapper.eq("course_id", courseId);
         queryWrapper.eq("member_id", memberId);
         Order orderExist = baseMapper.selectOne(queryWrapper);
-        if(orderExist != null){
+        if (orderExist != null) {
             return orderExist.getId(); //如果订单已存在，则直接返回订单id
         }
 
@@ -121,19 +124,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public Order getOrderByOrderNo(String orderNo) {
-
         QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("order_no", orderNo);
         return baseMapper.selectOne(queryWrapper);
     }
 
-    @Autowired
-    private PayLogMapper payLogMapper;
-
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void updateOrderStatus(Map<String, String> map) {
-
+    public String updateOrderStatus(Map<String, String> map) {
         //更新订单状态
         String orderNo = map.get("out_trade_no");
         Order order = this.getOrderByOrderNo(orderNo);
@@ -153,6 +151,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
         //更新课程销量：有问题直接熔断
         eduCourseService.updateBuyCountById(order.getCourseId());
+
+        return order.getCourseId();
+
     }
 
     @Override
@@ -160,6 +161,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("order_no", orderNo);
         Order order = baseMapper.selectOne(queryWrapper);
-        return order.getStatus() == 1;
+        if (order != null) {
+            return order.getStatus() == 1;
+        }
+        return false;
     }
 }

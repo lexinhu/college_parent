@@ -71,7 +71,7 @@ public class ApiCourseController {
     @GetMapping("inner/update-buy-count/{id}")
     public R updateBuyCountById(
             @ApiParam(value = "课程id", required = true)
-            @PathVariable String id){
+            @PathVariable("id") String id){
         courseService.updateBuyCountById(id);
         return R.ok();
     }

@@ -2,8 +2,10 @@ package com.xn2001.college.service.mail.controller;
 
 import com.netflix.client.ClientException;
 import com.xn2001.college.common.base.result.R;
+import com.xn2001.college.common.base.result.ResultCodeEnum;
 import com.xn2001.college.common.base.util.FormUtils;
 import com.xn2001.college.common.base.util.RandomUtils;
+import com.xn2001.college.service.base.exception.CollegeException;
 import com.xn2001.college.service.mail.service.MailService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +47,7 @@ public class ApiMailController {
         try {
             mailService.sendCode(email, "小湖视频网-注册验证码", checkCode, "code.html");
         } catch (Exception e) {
-            // TODO: 2021/2/19 异常待处理
+            throw new CollegeException(ResultCodeEnum.MAIL_ERROR);
         }
         //将验证码存入redis缓存
         redisTemplate.opsForValue().set(email, checkCode, 5, TimeUnit.MINUTES);

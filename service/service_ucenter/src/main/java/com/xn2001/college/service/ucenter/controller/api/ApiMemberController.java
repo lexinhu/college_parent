@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +34,7 @@ public class ApiMemberController {
 
     @ApiOperation(value = "会员注册")
     @PostMapping("register")
-    public R register(@RequestBody RegisterVo registerVo) {
+    public R register(@Validated @RequestBody RegisterVo registerVo) {
         memberService.register(registerVo);
         return R.ok();
     }

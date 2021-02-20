@@ -37,6 +37,9 @@ public class Member extends BaseEntity {
     @ApiModelProperty(value = "密码")
     private String password;
 
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+
     @ApiModelProperty(value = "昵称")
     private String nickname;
 

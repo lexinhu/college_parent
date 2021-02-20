@@ -49,9 +49,10 @@ public enum ResultCodeEnum {
 
     GATEWAY_ERROR(false, 26000, "服务不能访问"),
 
+    MAIL_ERROR(false,28008,"邮箱发送失败"),
     CODE_ERROR(false, 28000, "验证码错误"),
     LOGIN_DISABLED_ERROR(false, 28002, "该用户已被禁用"),
-    REGISTER_MOBLE_ERROR(false, 28003, "手机号已被注册"),
+    REGISTER_USERINFO_ERROR(false, 28003, "手机号或者邮箱已被注册"),
     LOGIN_AUTH(false, 28004, "请先进行登录"),
     LOGIN_ACL(false, 28005, "没有权限"),
     SMS_SEND_ERROR(false, 28006, "短信发送失败"),

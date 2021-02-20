@@ -1,3 +1,6 @@
+server:
+  port: 8090
+
 spring:
   profiles:
     active: dev
@@ -35,5 +38,4 @@ spring:
     suffix: .html # 模版后缀名 默认为ftl
     charset: UTF-8 # 文件编码
     template-loader-path: classpath:/templates/  # 存放模板的文件夹，以resource文件夹为相对路径
-server:
-  port: 8088
+
