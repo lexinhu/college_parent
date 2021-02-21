@@ -29,6 +29,11 @@ spring:
       transport:
         port: 8081 #跟控制台交流的端口，随意指定一个未使用的端口即可
         dashboard: 127.0.0.1:8080 #指定控制台服务的地址
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password:  #默认为空
 
 ribbon:
   ConnectTimeout: 15000 #连接建立的超时时长，默认1秒
@@ -39,7 +44,7 @@ feign:
     enabled: true
 
 mybatis-plus:
-  mapper-locations: classpath:**/xml/*.xml
+  mapperLocations: classpath:**/xml/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

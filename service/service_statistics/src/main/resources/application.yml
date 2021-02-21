@@ -28,7 +28,7 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #mybatis日志
-  mapper-locations: classpath:**/xml/*.xml
+  mapperLocations: classpath:**/xml/*.xml
 
 ribbon:
   ConnectTimeout: 10000 #连接建立的超时时长，默认1秒

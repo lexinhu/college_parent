@@ -10,12 +10,18 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password:  #默认为空
+
   servlet:
     multipart:
       max-file-size: 2048MB #最大上传单个文件大小：默认1M
       max-request-size: 2048MB #最大置总上传的数据大小 ：默认10M
 
-#阿里云vod视频存储
+#阿里云vod视频存储，已更换为腾讯云，在下面。
 aliyun:
   vod:
     keyid:
