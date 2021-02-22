@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 本机
+ Source Server         : 亚马逊小湖学院
  Source Server Type    : MySQL
- Source Server Version : 80020
- Source Host           : 127.0.0.1:3306
+ Source Server Version : 80023
+ Source Host           : 52.82.63.66:39510
  Source Schema         : edu_trade
 
  Target Server Type    : MySQL
- Target Server Version : 80020
+ Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 16/08/2020 22:51:27
+ Date: 22/02/2021 23:22:32
 */
 
 SET NAMES utf8mb4;
@@ -44,14 +44,6 @@ CREATE TABLE `trade_order`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '订单' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of trade_order
--- ----------------------------
-INSERT INTO `trade_order` VALUES ('1290520153532026882', '20200804132915504', '1283009951186538497', 'MySQL性能瓶颈', 'https://edu-college.oss-cn-shenzhen.aliyuncs.com/cover/2020/07/14/20200714200621.jpg', '钟小湖', '1288903814354698242', '乐心湖', '13729207180', 88800.00, 1, 0, 1, '2020-08-04 13:29:16', '2020-08-04 13:29:16');
-INSERT INTO `trade_order` VALUES ('1290549452163223553', '20200804152541380', '1283009951186538497', 'MySQL性能瓶颈', 'https://edu-college.oss-cn-shenzhen.aliyuncs.com/cover/2020/07/14/20200714200621.jpg', '钟小湖', '1288903814354698242', '乐心湖', '13729207180', 88800.00, 1, 0, 1, '2020-08-04 15:25:41', '2020-08-04 15:25:41');
-INSERT INTO `trade_order` VALUES ('1290631296195985409', '20200804205054296', '1283009951186538497', 'MySQL性能瓶颈', 'https://edu-college.oss-cn-shenzhen.aliyuncs.com/cover/2020/07/14/20200714200621.jpg', '钟小湖', '1288903814354698242', '乐心湖', '13729207180', 1.00, 1, 1, 0, '2020-08-04 20:50:54', '2020-08-04 20:50:54');
-INSERT INTO `trade_order` VALUES ('1290639339612688385', '20200804212252819', '1282899934500245505', 'Linux高级', 'https://edu-college.oss-cn-shenzhen.aliyuncs.com/cover/2020/07/15/20200715042605.jpg', '陈苗苗', '1288903814354698242', '乐心湖', '13729207180', 1.00, 1, 1, 0, '2020-08-04 21:22:52', '2020-08-04 21:22:52');
-
--- ----------------------------
 -- Table structure for trade_pay_log
 -- ----------------------------
 DROP TABLE IF EXISTS `trade_pay_log`;
@@ -70,11 +62,5 @@ CREATE TABLE `trade_pay_log`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_order_no`(`order_no`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '支付日志表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of trade_pay_log
--- ----------------------------
-INSERT INTO `trade_pay_log` VALUES ('1290631420355772417', '20200804205054296', '2020-08-04 20:51:24', 1, '4200000600202008043507950371', 'SUCCESS', 1, '{\"transaction_id\":\"4200000600202008043507950371\",\"nonce_str\":\"6bf309a6c7e549dab8ae4f8a84f55790\",\"bank_type\":\"OTHERS\",\"openid\":\"oQTXC53sVJhk2PTlSBj6PVInC1v8\",\"sign\":\"8464CF2E566813E67F63FD2692E34D95\",\"fee_type\":\"CNY\",\"mch_id\":\"1543338551\",\"cash_fee\":\"1\",\"out_trade_no\":\"20200804205054296\",\"appid\":\"wxf913bfa3a2c7eeeb\",\"total_fee\":\"1\",\"trade_type\":\"NATIVE\",\"result_code\":\"SUCCESS\",\"time_end\":\"20200804205120\",\"is_subscribe\":\"N\",\"return_code\":\"SUCCESS\"}', 0, '2020-08-04 20:51:24', '2020-08-04 20:51:24');
-INSERT INTO `trade_pay_log` VALUES ('1290639447309832194', '20200804212252819', '2020-08-04 21:23:18', 1, '4200000588202008042253619487', 'SUCCESS', 1, '{\"transaction_id\":\"4200000588202008042253619487\",\"nonce_str\":\"85566d655ae84994afaf057a29cb04ee\",\"bank_type\":\"OTHERS\",\"openid\":\"oQTXC53sVJhk2PTlSBj6PVInC1v8\",\"sign\":\"17536151CC5C42ED3854265A8F5437B4\",\"fee_type\":\"CNY\",\"mch_id\":\"1543338551\",\"cash_fee\":\"1\",\"out_trade_no\":\"20200804212252819\",\"appid\":\"wxf913bfa3a2c7eeeb\",\"total_fee\":\"1\",\"trade_type\":\"NATIVE\",\"result_code\":\"SUCCESS\",\"time_end\":\"20200804212312\",\"is_subscribe\":\"N\",\"return_code\":\"SUCCESS\"}', 0, '2020-08-04 21:23:18', '2020-08-04 21:23:18');
 
 SET FOREIGN_KEY_CHECKS = 1;

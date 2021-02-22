@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 本机
+ Source Server         : 亚马逊小湖学院
  Source Server Type    : MySQL
- Source Server Version : 80020
- Source Host           : 127.0.0.1:3306
+ Source Server Version : 80023
+ Source Host           : 52.82.63.66:39510
  Source Schema         : edu_cms
 
  Target Server Type    : MySQL
- Target Server Version : 80020
+ Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 16/08/2020 22:51:48
+ Date: 22/02/2021 23:22:11
 */
 
 SET NAMES utf8mb4;
@@ -36,13 +36,6 @@ CREATE TABLE `cms_ad`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '广告推荐' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of cms_ad
--- ----------------------------
-INSERT INTO `cms_ad` VALUES ('1288062905631248386', '广告1', '1', 'https://edu-college.oss-cn-shenzhen.aliyuncs.com/ad/2020/07/28/20200728184454.jpg', '#BCAFAF', '', 1, '2020-07-28 18:45:02', '2020-07-28 18:45:02');
-INSERT INTO `cms_ad` VALUES ('1288062993086681089', '广告2', '1', 'https://edu-college.oss-cn-shenzhen.aliyuncs.com/ad/2020/07/28/20200728184519.jpg', '#483A3A', '', 0, '2020-07-28 18:45:23', '2020-07-28 18:45:23');
-INSERT INTO `cms_ad` VALUES ('1288063060078104577', '广告3', '1', 'https://edu-college.oss-cn-shenzhen.aliyuncs.com/ad/2020/07/28/20200728184730.jpg', NULL, '', 0, '2020-07-28 18:45:39', '2020-07-28 18:45:39');
-
--- ----------------------------
 -- Table structure for cms_ad_type
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_ad_type`;
@@ -53,10 +46,5 @@ CREATE TABLE `cms_ad_type`  (
   `gmt_modified` datetime(0) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '推荐位' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of cms_ad_type
--- ----------------------------
-INSERT INTO `cms_ad_type` VALUES ('1', '首页', '2020-07-28 17:50:33', '2020-07-28 17:50:33');
 
 SET FOREIGN_KEY_CHECKS = 1;
