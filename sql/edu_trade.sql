@@ -1,19 +1,3 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : 亚马逊小湖学院
- Source Server Type    : MySQL
- Source Server Version : 80023
- Source Host           : 52.82.63.66:39510
- Source Schema         : edu_trade
-
- Target Server Type    : MySQL
- Target Server Version : 80023
- File Encoding         : 65001
-
- Date: 22/02/2021 23:22:32
-*/
-
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
