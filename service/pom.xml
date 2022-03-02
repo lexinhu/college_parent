@@ -20,7 +20,7 @@
         <module>service_ucenter</module>
         <module>service_trade</module>
         <module>service_statistics</module>
-        <module>service-mail</module>
+        <module>service_mail</module>
     </modules>
     <dependencies>
         <!--参数校验-->

@@ -9,6 +9,7 @@ import sun.misc.BASE64Encoder;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author 乐心湖
@@ -46,7 +47,7 @@ public class VodSignatureUtils {
         contextStr += "&currentTimeStamp=" + currentTime;
         contextStr += "&expireTime=" + endTime;
         contextStr += "&random=" + random;
-        contextStr += "&procedure=小湖学院";
+        contextStr += "&procedure=" + vodProperties.getProcedure();
 
         try {
             Mac mac = Mac.getInstance(HMAC_ALGORITHM);
@@ -54,7 +55,7 @@ public class VodSignatureUtils {
             mac.init(secretKey);
 
             byte[] hash = mac.doFinal(contextStr.getBytes(CONTENT_CHARSET));
-            byte[] sigBuf = byteMerger(hash, contextStr.getBytes("utf8"));
+            byte[] sigBuf = byteMerger(hash, contextStr.getBytes(StandardCharsets.UTF_8));
             strSign = base64Encode(sigBuf);
             strSign = strSign.replace(" ", "").replace("\n", "").replace("\r", "");
         } catch (Exception e) {

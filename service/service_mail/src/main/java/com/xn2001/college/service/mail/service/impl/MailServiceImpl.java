@@ -36,8 +36,11 @@ public class MailServiceImpl implements MailService {
     @Value("${spring.mail.username}")
     private String fromEmail;
 
+    @Value("${spring.mail.subject}")
+    private String subject;
+
     @Override
-    public void sendCode(String email, String subject, String checkCode, String template) throws Exception {
+    public void sendCode(String email, String checkCode, String template) throws Exception {
 
         // 获得模板
         Template templateTem = freeMarkerConfigurer.getConfiguration().getTemplate(template);

@@ -5,5 +5,5 @@ package com.xn2001.college.service.mail.service;
  * @date 2021/2/19 17:04
  **/
 public interface MailService {
-    void sendCode(String email, String subject, String checkCode, String template) throws Exception;
+    void sendCode(String email, String checkCode, String template) throws Exception;
 }

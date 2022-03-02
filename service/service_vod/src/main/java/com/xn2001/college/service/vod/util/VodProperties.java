@@ -14,4 +14,5 @@ import org.springframework.stereotype.Component;
 public class VodProperties {
     private String secretId;
     private String secretKey;
+    private String procedure;
 }

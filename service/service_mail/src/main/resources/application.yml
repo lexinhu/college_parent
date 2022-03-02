@@ -27,6 +27,7 @@ spring:
     host:
     username:
     password:
+    subject: 小湖视频网-注册验证码
     properties.mail.smtp.port: 465
     properties.mail.smtp.starttls.enable: true
     properties.mail.smtp.starttls.required: true

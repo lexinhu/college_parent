@@ -45,7 +45,7 @@ public class ApiMailController {
         String checkCode = RandomUtils.getFourBitRandom();
         //发送验证码
         try {
-            mailService.sendCode(email, "小湖视频网-注册验证码", checkCode, "code.html");
+            mailService.sendCode(email, checkCode, "code.html");
         } catch (Exception e) {
             throw new CollegeException(ResultCodeEnum.MAIL_ERROR);
         }

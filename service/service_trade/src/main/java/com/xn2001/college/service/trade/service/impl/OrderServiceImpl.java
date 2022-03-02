@@ -142,9 +142,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         PayLog payLog = new PayLog();
         payLog.setOrderNo(orderNo);
         payLog.setPayTime(new Date());
-        payLog.setPayType(1);//支付类型
-        payLog.setTotalFee(Long.parseLong(map.get("total_fee")));//总金额(分)
-        payLog.setTradeState(map.get("result_code"));//支付状态
+        //支付类型
+        payLog.setPayType(1);
+        //总金额(分)
+        payLog.setTotalFee(Long.parseLong(map.get("total_fee")));
+        //支付状态
+        payLog.setTradeState(map.get("result_code"));
         payLog.setTransactionId(map.get("transaction_id"));
         payLog.setAttr(new Gson().toJson(map));
         payLogMapper.insert(payLog);
